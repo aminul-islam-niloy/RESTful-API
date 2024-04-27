@@ -54,6 +54,15 @@ router.patch("/:id", getUser, async (req, res) => {
   if (req.body.name != null) {
     res.user.name = req.body.name;
   }
+  if (req.body.age != null) {
+    res.user.age = req.body.age;
+  }
+  if (req.body.phone != null) {
+    res.user.phone = req.body.phone;
+  }
+  if (req.body.address != null) {
+    res.user.address = req.body.address;
+  }
   try {
     const updatedUser = await res.user.save();
     res.json(updatedUser);
@@ -61,6 +70,7 @@ router.patch("/:id", getUser, async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
 
 // DELETE user by ID
 router.delete("/:id", getUser, async (req, res) => {
